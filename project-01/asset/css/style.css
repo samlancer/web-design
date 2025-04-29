@@ -106,3 +106,39 @@ a {
     }
 
 }
+@media(max-width: 375px) {
+    body {
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .container {
+        flex-direction: column;
+        display: flex;
+        width: 90%;
+    }
+
+    .card {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .sedan-card {
+        background-color: var(--Bright-orange);
+        border-radius: 0;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+    }
+
+    
+    .luxury-card {
+        background-color: var(--Very-dark-cyan);
+        border-radius: 0;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+}
