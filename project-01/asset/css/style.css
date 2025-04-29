@@ -1,50 +1,108 @@
-*{
+:root {
+    --Bright-orange: #e38826;
+    --Dark-cyan: #006970;
+    --Very-dark-cyan: #004241;
+
+}
+
+* {
     box-sizing: border-box;
-    padding: 0 px;
-    margin: 0 px;
+    padding: 0;
+    margin: 0;
 }
-@font-face {
-    font-family:lexed ;
-    src: url(asset/fonts/Lexend_Deca/LexendDeca-Regular.ttf);
+
+.container {
+    display: flex;
+    width: 70%;
 }
-@font-face {
-    font-family:big_shoulder ;
-    src: url(asset/fonts/Big_Shoulders_Display/BigShouldersDisplay-Bold.ttf);
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
-.first_card{
-    background-color: #e38826;
+
+.card {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
-.second_card{
-    background-color: #006970;
+
+.sedan-card {
+    background-color: var(--Bright-orange);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
 }
-.third_card{
-    background-color: #004241;
+
+.sedan-card a,
+.sedan-card a:visited {
+    color: var(--Bright-orange);
 }
-ul{
-    list-style: none;
-    padding-right: 10%;
+
+.suv-card {
+    background-color: var(--Dark-cyan);
 }
-.lexed{
-    font-family: lexed;
-    color: #ffffff;
-    font-size: 15px
+
+.luxury-card {
+    background-color: var(--Very-dark-cyan);
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
-.big_shoulder{
-    font-family: big_shoulder;
-    color: #f2f2f2;
-    font-size: 20px;
-    font-weight: 800;
+
+.suv-card a,
+.suv-card a:visited {
+    color: var(--Dark-cyan);
 }
-li{
-    margin-bottom: 10%;
+
+.luxury-card a,
+.luxury-card a:visited {
+    color: var(--Very-dark-cyan);
 }
-button{
-    border: 2px solid #f2f2f2;
+
+img {
+    width: 80px;
+}
+
+h2 {
+    color: white;
+    font-family: big shoulders;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+p {
+    color: white;
+    opacity: 0.7;
+    font-family: Lexend Deca;
+    font-weight: 400;
+
+}
+
+a {
+    padding: 12px;
+    font-family: Lexend Deca;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.button {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 2px solid white;
+    margin-top: 80px;
+    border-radius: 30px;
+}
+
+.button:hover {
     background-color: transparent;
-    color: #f2f2f2;
-    margin: 10% 0%;
-    padding: 5% 10%;
-    font-family: lexed;
-    border-radius: 29px;
+
+    a {
+        color: white;
+    }
 
 }
