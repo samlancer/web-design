@@ -10,12 +10,12 @@
 
 @font-face {
     font-family: young-serf;
-    src: url(/asset/fonts/young-serif/YoungSerif-Regular.ttf);
+    src: url(./asset/fonts/young-serif/YoungSerif-Regular.ttf);
 }
 
 @font-face {
     font-family: outfit;
-    src: url(/asset/fonts/outfit/Outfit-VariableFont_wght.ttf);
+    src: url(./asset/fonts/outfit/Outfit-VariableFont_wght.ttf);
 }
 
 * {
