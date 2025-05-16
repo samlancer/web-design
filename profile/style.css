@@ -13,24 +13,24 @@
 
 @font-face {
     font-family: inter-700;
-    src: url(assets/fonts/Inter-Bold.ttf);
+    src: url(./assets/fonts/Inter-Bold.ttf);
 }
 
 @font-face {
     font-family: inter-400;
-    src: url(/assets/fonts/Inter-Regular.ttf);
+    src: url(./assets/fonts/Inter-Regular.ttf);
 
 }
 
 @font-face {
     font-family: inter-600;
-    src: url(assets/fonts/Inter-SemiBold.ttf);
+    src: url(./assets/fonts/Inter-SemiBold.ttf);
 
 }
 
 @font-face {
     font-family: inter;
-    src: url(/assets/fonts/Inter-VariableFont_slnt\,wght.ttf);
+    src: url(./assets/fonts/Inter-VariableFont_slnt\,wght.ttf);
 }
 
 main {
