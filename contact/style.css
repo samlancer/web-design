@@ -97,6 +97,11 @@ input:hover{
         border: 1px solid var(--Green-600);
 
 }
+input:focus,
+textarea:focus {
+  outline: none;
+  border: 2px solid var(--Green-600);
+}
 .s-button:hover{
         background-color: var(--Green-800);
 
