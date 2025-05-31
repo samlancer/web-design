@@ -13,50 +13,88 @@
 <body>
   <div class="container">
     <h1>Contact Us</h1>
-    <form action="post">
+    <form>
 
       <div class="input-box">
         <div class="h-input">
           <label for="f-name">First Name *</label>
           <input type="text" name="first-name" id="f-name">
+          <SPan>This field is required</SPan>
         </div>
         <div class="h-input">
           <label for="l-name">Last Name *</label>
           <input type="text" name="last-name" id="l-name">
+          <SPAn>This field is required</SPAn>
         </div>
       </div>
       <div class="input-box">
         <div class="h-input">
           <label for="email">Email Address *</label>
           <input type="text" name="email" id="email">
+          <SPAn>Please enter a valid email address</SPAn>
         </div>
       </div>
       <label for="query type"> Query Type *</label>
       <div class="input-box" style="margin-top: 10px;">
         <div class="h-inputradio">
-    <input type="radio" name="g-enquiry" id="g-enq">
-    <label for="g-enq">General Enquiry</label>
-  </div>
-    <div class="h-inputradio">
-      <input type="radio" name="g-enquiry" id="s-req">
-    <label for="s-req">Supprot Request</label>
-  </div>
+          <input type="radio" name="g-enquiry" id="g-enq">
+          <label for="g-enq">General Enquiry</label>
+        </div>
+        <div class="h-inputradio">
+          <input type="radio" name="g-enquiry" id="s-req">
+          <label for="s-req">Supprot Request</label>
+        </div>
       </div>
+      <span>Please select a query type</span>
       <div class="input-box">
         <div class="h-input">
           <label for="message">Message *</label>
           <textarea name="support-message" id="message"></textarea>
+          <span>This field is required</span>
         </div>
       </div>
       <div class="input-box">
-        <div class="h-inputcheckbox">
-          <input type="checkbox" name="consent" id="consent">
-          <label for="consent">I consent to being contacted by the team *</label>
+        <div class="h-input">
+          <div class="h-inputcheckbox">
+            <input type="checkbox" name="consent" id="consent">
+            <label for="consent">I consent to being contacted by the team *</label>
+          </div>
+          <span>To submit this form, please consent to being contacted</span>
         </div>
+
       </div>
-      <button class="s-button" type="submit"> Submit</button>
+
+      <input class="s-button" type="submit" value="Submit">
     </form>
   </div>
+  <script>
+    fName = document.querySelector("#f-name")
+    lName = document.querySelector("#l-name")
+    eMail = document.querySelector("#email")
+    radio1 = document.querySelector("#g-enq")
+    radio2 = document.querySelector("#s-req")
+    textarea = document.querySelector("#message")
+    checkbox = document.querySelector("#consent")
+
+    document.querySelector(".s-button").addEventListener("click", function () {
+      if (fName.value.length == 0) {
+        alert("name cannot be empty")
+      } else if (lName.value.length == 0) {
+        alert("last name cannot be empty")
+      } else if (email.value.length == 0) {
+        alert("please enter email address")
+      } else if (!radio1.checked && !radio2.checked) {
+        alert("an query type must be checked")
+      } else if (textarea.value.length == 0) {
+        alert("we need you enr=ter your message")
+      } else if (!checkbox.checked) {
+        alert("please tick the consent box")
+      }else{
+        alert("your input is totally fine :)")
+      }
+    })
+
+  </script>
 </body>
 
 </html>
