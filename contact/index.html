@@ -13,7 +13,7 @@
 <body>
   <div class="container">
     <h1>Contact Us</h1>
-    <form>
+    <form id="contact-form">
 
       <div class="input-box">
         <div class="h-input">
@@ -24,25 +24,25 @@
         <div class="h-input">
           <label for="l-name">Last Name *</label>
           <input type="text" name="last-name" id="l-name">
-          <SPAn>This field is required</SPAn>
+          <span>This field is required</span>
         </div>
       </div>
       <div class="input-box">
         <div class="h-input">
           <label for="email">Email Address *</label>
           <input type="text" name="email" id="email">
-          <SPAn>Please enter a valid email address</SPAn>
+          <span>Please enter a valid email address</span>
         </div>
       </div>
-      <label for="query type"> Query Type *</label>
-      <div class="input-box" style="margin-top: 10px;">
+      <label for="query-type">Query Type *</label>
+      <div class="input-box" id="radio-box" style="margin-top: 10px;">
         <div class="h-inputradio">
-          <input type="radio" name="g-enquiry" id="g-enq">
+          <input type="radio" name="g-enquiry" id="g-enq" value="general">
           <label for="g-enq">General Enquiry</label>
         </div>
         <div class="h-inputradio">
-          <input type="radio" name="g-enquiry" id="s-req">
-          <label for="s-req">Supprot Request</label>
+          <input type="radio" name="g-enquiry" id="s-req" value="support">
+          <label for="s-req">Support Request</label>
         </div>
       </div>
       <span>Please select a query type</span>
@@ -75,24 +75,94 @@
     radio2 = document.querySelector("#s-req")
     textarea = document.querySelector("#message")
     checkbox = document.querySelector("#consent")
+    text_inputs = document.querySelectorAll("input[type=text]")
+    form = document.querySelector("#contact-form")
+    console.log(form)
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      has_error = false
+      emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      data = new FormData(form)
+      name = data.get('first-name')
+      lastname = data.get('last-name')
+      email = data.get('email')
+      query_type = data.get("g-enquiry")
+      message = data.get("support-message")
+      consent = data.get("consent")
+      console.log(query_type)
+      for (i = 0; i < text_inputs.length; i++) {
+        text_inputs[i].nextElementSibling.classList.remove('span-active')
+      }
+      document.getElementById('radio-box').nextElementSibling.classList.remove("span-active")
+      document.getElementById('message').nextElementSibling.classList.remove("span-active")
+      document.querySelector(".h-inputcheckbox").nextElementSibling.classList.remove("span-active")
 
-    document.querySelector(".s-button").addEventListener("click", function () {
-      if (fName.value.length == 0) {
-        alert("name cannot be empty")
-      } else if (lName.value.length == 0) {
-        alert("last name cannot be empty")
-      } else if (email.value.length == 0) {
-        alert("please enter email address")
-      } else if (!radio1.checked && !radio2.checked) {
-        alert("an query type must be checked")
-      } else if (textarea.value.length == 0) {
-        alert("we need you enr=ter your message")
-      } else if (!checkbox.checked) {
-        alert("please tick the consent box")
+
+      if (name.length > 12 || name.length < 3) {
+        fName.nextElementSibling.textContent = "name must have 3-12 characters"
+        fName.nextElementSibling.classList.add('span-active');
+        has_error = true
+      }
+      if (name.length == 0) {
+        fName.nextElementSibling.textContent = "This field is required "
+        fName.nextElementSibling.classList.add('span-active');
+        has_error = true
+
+      }
+      if (lastname.length > 20 || lastname.length < 2) {
+        lName.nextElementSibling.textContent = "last name must have 2-20 characters"
+        lName.nextElementSibling.classList.add('span-active');
+        has_error = true
+
+
+      }
+      if (lastname.length == 0) {
+        lName.nextElementSibling.textContent = "This field is required"
+        lName.nextElementSibling.classList.add('span-active');
+        has_error = true
+
+
+      }
+      if (!emailPattern.test(email)) {
+        eMail.nextElementSibling.textContent = 'Invalid email format';
+        eMail.nextElementSibling.classList.add('span-active');
+        has_error = true
+
+
+      }
+      if (email.length == 0) {
+        eMail.nextElementSibling.textContent = 'Please enter your email address';
+        eMail.nextElementSibling.classList.add('span-active');
+        has_error = true
+
+
+      }
+      if (!query_type) {
+        document.getElementById('radio-box').nextElementSibling.classList.add("span-active")
+        has_error = true
+
+
+      }
+      if (message.length == 0) {
+        document.getElementById('message').nextElementSibling.classList.add("span-active")
+        has_error = true
+
+
+      }
+      if (!consent) {
+        document.querySelector(".h-inputcheckbox").nextElementSibling.classList.add("span-active")
+        has_error = true
+
+
+      }
+      if (!has_error) {
+        form.submit();
+        alert("FORM SUBMITTED SUCCESSFULLY :)")
       }else{
-        alert("your input is totally fine :)")
+        alert("you need to correct the errors to submit the form")
       }
     })
+
 
   </script>
 </body>
