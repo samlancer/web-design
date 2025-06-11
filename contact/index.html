@@ -18,30 +18,30 @@
       <div class="input-box">
         <div class="h-input">
           <label for="f-name">First Name *</label>
-          <input type="text" name="first-name" id="f-name">
+          <input type="text" name="first-name" id="f-name" thisIsRiquired minCh="3" maxCh="12">
           <SPan>This field is required</SPan>
         </div>
         <div class="h-input">
           <label for="l-name">Last Name *</label>
-          <input type="text" name="last-name" id="l-name">
+          <input type="text" name="last-name" id="l-name" thisIsRiquired minCh="2" maxCh="20">
           <span>This field is required</span>
         </div>
       </div>
       <div class="input-box">
         <div class="h-input">
           <label for="email">Email Address *</label>
-          <input type="text" name="email" id="email">
+          <input type="text" name="email" id="email" thisIsRiquired>
           <span>Please enter a valid email address</span>
         </div>
       </div>
       <label for="query-type">Query Type *</label>
       <div class="input-box" id="radio-box" style="margin-top: 10px;">
         <div class="h-inputradio">
-          <input type="radio" name="g-enquiry" id="g-enq" value="general">
+          <input type="radio" name="g-enquiry" id="g-enq" value="general" thisIsRiquired>
           <label for="g-enq">General Enquiry</label>
         </div>
         <div class="h-inputradio">
-          <input type="radio" name="g-enquiry" id="s-req" value="support">
+          <input type="radio" name="g-enquiry" id="s-req" value="support" thisIsRiquired>
           <label for="s-req">Support Request</label>
         </div>
       </div>
@@ -49,14 +49,14 @@
       <div class="input-box">
         <div class="h-input">
           <label for="message">Message *</label>
-          <textarea name="support-message" id="message"></textarea>
+          <textarea name="support-message" id="textarea" thisIsRiquired></textarea>
           <span>This field is required</span>
         </div>
       </div>
       <div class="input-box">
         <div class="h-input">
           <div class="h-inputcheckbox">
-            <input type="checkbox" name="consent" id="consent">
+            <input type="checkbox" name="consent" id="consent" thisIsRiquired>
             <label for="consent">I consent to being contacted by the team *</label>
           </div>
           <span>To submit this form, please consent to being contacted</span>
@@ -67,100 +67,211 @@
       <input class="s-button" type="submit" value="Submit">
     </form>
   </div>
+  <div class="creator-container">
+    <form id="creator-form" action="post">
+      <div class="input-box">
+        <div class="h-input">
+          <label for="Label">Label *</label>
+          <input type="text" name="label" id="label" placeholder="Please enter the desired label here" thisIsRiquired>
+          <span>error message</span>
+        </div>
+      </div>
+      <div class="input-box">
+        <div class="h-input">
+          <label for="Input_type">Input type *</label>
+          <select name="input-type" id="Input-type" thisIsRiquired>
+            <option value="">Select an input type</option>
+            <option value="text">Text</option>
+            <option value="radio">Radio group</option>
+            <option value="checkbox">Checkbox</option>
+            <option value="number">Number</option>
+          </select>
+          <span>error message</span>
+        </div>
+      </div>
+      <div class="input-box">
+        <div class="h-input">
+          <div class="h-inputcheckbox">
+            <input type="checkbox" name="required" id="required">
+            <label for="required">This field is required </label>
+          </div>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="input-box">
+        <div class="h-input">
+
+          <div class="h-input">
+            <label for="minimun-ch">Minimum characters allowed</label>
+            <input type="number" name="minimun-ch" id="minimun-ch">
+            <span>error message</span>
+          </div>
+        </div>
+      </div>
+      <input class="s-button" type="button" id="create" value="Create">
+    </form>
+  </div>
   <script>
-    fName = document.querySelector("#f-name")
-    lName = document.querySelector("#l-name")
-    eMail = document.querySelector("#email")
-    radio1 = document.querySelector("#g-enq")
-    radio2 = document.querySelector("#s-req")
-    textarea = document.querySelector("#message")
-    checkbox = document.querySelector("#consent")
-    text_inputs = document.querySelectorAll("input[type=text]")
-    form = document.querySelector("#contact-form")
-    console.log(form)
-    form.addEventListener('submit', function (event) {
+
+    create_btn = document.getElementById("create")
+    form = document.getElementById("contact-form")
+    // here is some validation for inputs and submitting form
+    form.addEventListener("submit", function (event) {
       event.preventDefault();
-      has_error = false
-      emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      data = new FormData(form)
-      name = data.get('first-name')
-      lastname = data.get('last-name')
-      email = data.get('email')
-      query_type = data.get("g-enquiry")
-      message = data.get("support-message")
-      consent = data.get("consent")
-      console.log(query_type)
-      for (i = 0; i < text_inputs.length; i++) {
-        text_inputs[i].nextElementSibling.classList.remove('span-active')
+      hasError = false
+      inputs = form.querySelectorAll('input, textarea')
+
+      inputs.forEach(input => {
+        if (input.type == "text") {
+          input.nextElementSibling.classList.remove("span-active")
+          if (input.hasAttribute("thisIsRiquired") && input.value.length == 0) {
+            input.nextElementSibling.textContent = "This input is required"
+            input.nextElementSibling.classList.add("span-active")
+            hasError = true
+
+          } else if (input.hasAttribute("minCh") && input.value !== "" && input.value.length < input.getAttribute("minCh")) {
+            min = input.getAttribute("minCh")
+            input.nextElementSibling.textContent = `input must be at least ${min} characters`
+            input.nextElementSibling.classList.add("span-active")
+            hasError = true
+
+          } else if (input.hasAttribute("maxCh") && input.value.length > input.getAttribute("maxCh")) {
+            max = input.getAttribute("maxCh")
+            input.nextElementSibling.textContent = `input must be lower than ${max} characters`
+            input.nextElementSibling.classList.add("span-active")
+            hasError = true
+
+          }
+        } else if (input.type == "checkbox") {
+          input.parentElement.nextElementSibling.classList.remove("span-active")
+          if (input.hasAttribute("thisIsRiquired") && !input.checked) {
+            input.nextElementSibling.textContent = "This input is required"
+            input.parentElement.nextElementSibling.classList.add("span-active")
+            hasError = true
+          }
+        } else if (input.id == "textarea") {
+          input.nextElementSibling.classList.remove("span-active")
+          if (input.hasAttribute("thisIsRiquired") && input.value.length == 0) {
+            input.nextElementSibling.textContent = "This input is required"
+            input.nextElementSibling.classList.add("span-active")
+            hasError = true
+          }
+        } else if (input.type == "radio") {
+          input.parentElement.parentElement.nextElementSibling.classList.remove("span-active")
+
+          name = input.getAttribute("name")
+          radiochecked = false
+          radioGroup = document.querySelectorAll(`input[name=${name}]`)
+          radioGroup.forEach(radio => {
+            if (radio.checked) {
+              radiochecked = true
+            }
+            if (input.hasAttribute("thisIsRiquired") && !radiochecked) {
+              input.nextElementSibling.textContent = "This input is required"
+              input.parentElement.parentElement.nextElementSibling.classList.add("span-active")
+              hasError = true
+            }
+
+          });
+
+        } else if (input.type == 'number') {
+          input.nextElementSibling.classList.remove("span-active")
+
+          if (input.hasAttribute("thisIsRiquired") && input.value == "") {
+            input.nextElementSibling.textContent = "This input is required";
+            input.nextElementSibling.classList.add("span-active");
+            hasError = true;
+          }
+          else if (input.value !== "" && input.hasAttribute("minCh") && input.value.length < input.getAttribute("minCh")) {
+            const min = input.getAttribute("minCh");
+            input.nextElementSibling.textContent = `Input must be at least ${min} digits`;
+            input.nextElementSibling.classList.add("span-active");
+            hasError = true;
+          }
+        }
+      });
+
+
+    })
+
+    counter = 0
+    create_btn.addEventListener('click', function () {
+      creatorHasError = false;
+      creatorform = document.getElementById("creator-form")
+      creatorInputs = creatorform.querySelectorAll("input,textarea,select")
+
+      creatorInputs.forEach(input => {
+// here we start validating :)
+        if (input.type == "text") {
+          input.nextElementSibling.classList.remove("span-active")
+          if (input.hasAttribute("thisIsRiquired") && input.value.length == 0) {
+            input.nextElementSibling.textContent = "This input is required"
+            input.nextElementSibling.classList.add("span-active")
+            creatorHasError = true
+          } else if (input.value.length > 40) {
+            input.nextElementSibling.textContent = "Maximum 40 characters allowed"
+            input.nextElementSibling.classList.add("span-active")
+            creatorHasError = true
+          }
+
+        } else if (input.type == "number") {
+          input.nextElementSibling.classList.remove("span-active")
+          if (input.value !== "" && parseFloat(input.value) < 0) {
+            input.nextElementSibling.textContent = "Value must not be negative"
+            input.nextElementSibling.classList.add("span-active")
+            creatorHasError = true
+          }
+
+        } else if (input.tagName == "SELECT") {
+          input.nextElementSibling.classList.remove("span-active")
+          if (input.hasAttribute("thisIsRiquired") && input.value == "") {
+            input.nextElementSibling.textContent = "Please select a valid option"
+            input.nextElementSibling.classList.add("span-active")
+            creatorHasError = true
+          }
+        }
+
+      })
+      if (creatorHasError) return;
+// end of validation
+      required_checkbox = document.getElementById("required")
+      min_character = document.getElementById("minimun-ch").value
+      input_box = document.createElement("div")
+      input_box.classList.add("input-box")
+
+      h_input = document.createElement("div")
+      h_input.classList.add("h-input")
+
+      input_label = document.createElement("label")
+      input_label.setAttribute("for", `input${counter}`)
+      input_label.textContent = document.getElementById("label").value
+
+      generated_input = document.createElement("input")
+      generated_input.type = document.getElementById("Input-type").value
+      generated_input.name = `input${counter}`
+      generated_input.id = `input${counter}`
+      if (required_checkbox.checked) {
+        generated_input.setAttribute("thisIsRiquired", "");
       }
-      document.getElementById('radio-box').nextElementSibling.classList.remove("span-active")
-      document.getElementById('message').nextElementSibling.classList.remove("span-active")
-      document.querySelector(".h-inputcheckbox").nextElementSibling.classList.remove("span-active")
-
-
-      if (name.length > 12 || name.length < 3) {
-        fName.nextElementSibling.textContent = "name must have 3-12 characters"
-        fName.nextElementSibling.classList.add('span-active');
-        has_error = true
+      if (min_character > 0) {
+        generated_input.setAttribute("minCh", `${min_character}`);
       }
-      if (name.length == 0) {
-        fName.nextElementSibling.textContent = "This field is required "
-        fName.nextElementSibling.classList.add('span-active');
-        has_error = true
+      error_span = document.createElement("span")
 
-      }
-      if (lastname.length > 20 || lastname.length < 2) {
-        lName.nextElementSibling.textContent = "last name must have 2-20 characters"
-        lName.nextElementSibling.classList.add('span-active');
-        has_error = true
+      h_input.appendChild(input_label)
+      h_input.appendChild(generated_input)
+      h_input.appendChild(error_span)
+      input_box.appendChild(h_input)
 
+      const submitBtn = form.querySelector('input[type="submit"]');
+      form.insertBefore(input_box, submitBtn);
+      counter++
+      document.getElementById("label").value = "";
+      document.getElementById("Input-type").value = "";
+      document.getElementById("minimun-ch").value = "";
+      document.getElementById("required").checked = false;
 
-      }
-      if (lastname.length == 0) {
-        lName.nextElementSibling.textContent = "This field is required"
-        lName.nextElementSibling.classList.add('span-active');
-        has_error = true
-
-
-      }
-      if (!emailPattern.test(email)) {
-        eMail.nextElementSibling.textContent = 'Invalid email format';
-        eMail.nextElementSibling.classList.add('span-active');
-        has_error = true
-
-
-      }
-      if (email.length == 0) {
-        eMail.nextElementSibling.textContent = 'Please enter your email address';
-        eMail.nextElementSibling.classList.add('span-active');
-        has_error = true
-
-
-      }
-      if (!query_type) {
-        document.getElementById('radio-box').nextElementSibling.classList.add("span-active")
-        has_error = true
-
-
-      }
-      if (message.length == 0) {
-        document.getElementById('message').nextElementSibling.classList.add("span-active")
-        has_error = true
-
-
-      }
-      if (!consent) {
-        document.querySelector(".h-inputcheckbox").nextElementSibling.classList.add("span-active")
-        has_error = true
-
-
-      }
-      if (!has_error) {
-        form.submit();
-        alert("FORM SUBMITTED SUCCESSFULLY :)")
-      }else{
-        alert("you need to correct the errors to submit the form")
-      }
     })
 
 
