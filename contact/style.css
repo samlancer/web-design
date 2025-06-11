@@ -143,7 +143,12 @@ input:checked{
         min-width: auto;
         width: 95%;
     }
-    
+    .creator-container{
+        width: 95%;
+    }
+    body{
+        flex-direction: column;
+    }
 }
 
 
