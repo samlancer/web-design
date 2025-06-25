@@ -16,17 +16,17 @@
 
 @font-face {
     font-family: pop-400i;
-    src: url(/assets/fonts/Poppins-Regular.ttf);
+    src: url(./assets/fonts/Poppins-Regular.ttf);
 }
 
 @font-face {
     font-family: pop-800i;
-    src: url(/assets/fonts/Poppins-ExtraBold.ttf);
+    src: url(./assets/fonts/Poppins-ExtraBold.ttf);
 }
 
 @font-face {
     font-family: pop-700;
-    src: url(/assets/fonts/Poppins-Bold.ttf);
+    src: url(./assets/fonts/Poppins-Bold.ttf);
 }
 
 body {
