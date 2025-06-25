@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age-Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="clock">
+        <div class="digit hour"></div>
+        <div class="digit min"></div>
+        <div class="digit sec"></div>
+    </div>
+    <div class="container">
+        <div class="input-box">
+            <div class="h-input">
+                <label for="day">DAY</label>
+                <input type="number" name="day" id="day" placeholder="DD">
+                <SPan class="error">This field is required</SPan>
+            </div>
+            <div class="h-input">
+                <label for="month">MONTH</label>
+                <input type="number" name="month" id="month" placeholder="MM">
+                <SPan class="error">This field is required</SPan>
+            </div>
+            <div class="h-input">
+                <label for="Year">YEAR</label>
+                <input type="number" name="year" id="year" placeholder="YYYY">
+                <span class="error">This field is required</span>
+            </div>
+
+        </div>
+        <div class="line">
+            <hr>
+            <div class="circle">
+                <img src="/assets/images/icon-arrow.svg" alt="">
+            </div>
+        </div>
+        <h2><span class="numbers years">--</span>years</h2>
+        <h2><span class="numbers months">--</span>months</h2>
+        <h2><span class="numbers days">--</span>days</h2>
+    </div>
+    <script>
+        calc_btn = document.querySelector(".circle")
+        inputs = document.querySelectorAll("input")
+        console.log(inputs)
+        calc_btn.addEventListener('click', function () {
+
+            current_date = new Date()
+            birth_day = document.querySelector("#day").value
+            birth_month = document.querySelector("#month").value
+            birth_year = document.querySelector("#year").value
+            isValid = true
+            inputs.forEach(input => {
+                const label = input.previousElementSibling;
+                const error = input.nextElementSibling;
+                input.classList.remove("red_border");
+                label.classList.remove("red_text");
+                error.classList.remove("error-active");
+                if (input.value.trim() == "" || input.value == 0) {
+                    input.classList.add("red_border");
+                    label.classList.add("red_text");
+                    error.classList.add("error-active");
+                    isValid = false;
+                }
+                if (input.id == "day" && (input.value < 0 || input.value > 30)) {
+                    input.classList.add("red_border");
+                    label.classList.add("red_text");
+                    error.textContent = "Must be a valid day"
+                    error.classList.add("error-active");
+                    isValid = false;
+                }
+                if (input.id == "month" && (input.value < 0 || input.value > 12)) {
+                    input.classList.add("red_border");
+                    label.classList.add("red_text");
+                    error.textContent = "Must be a valid month"
+                    error.classList.add("error-active");
+                    isValid = false;
+                }
+                if (input.id == "year" && (input.value > current_date.getFullYear())) {
+                    input.classList.add("red_border");
+                    label.classList.add("red_text");
+                    error.textContent = "Must be in the past"
+                    error.classList.add("error-active");
+                    isValid = false;
+                }
+                if (input.id == "year" && (input.value < 0)) {
+                    input.classList.add("red_border");
+                    label.classList.add("red_text");
+                    error.textContent = "Must be a valid year"
+                    error.classList.add("error-active");
+                    isValid = false;
+                }
+
+
+            });
+            if (!isValid) return;
+
+
+
+
+
+
+
+
+
+
+            years = current_date.getFullYear() - birth_year
+            months = current_date.getMonth() + 1 - birth_month
+            days = current_date.getDate() - birth_day
+            if (days < 0) {
+                months--
+                days += 30
+            }
+            if (months < 0) {
+                years--
+                months += 12
+            }
+            days_span = document.querySelector(".days")
+            month_span = document.querySelector(".months")
+            years_span = document.querySelector(".years")
+            days_span.textContent = days
+            month_span.textContent = months
+            years_span.textContent = years
+
+        })
+
+        function update_time() {
+            time = new Date();
+            hour = String(time.getHours()).padStart(2, '0')
+            minutes = String(time.getMinutes()).padStart(2, '0')
+            second = String(time.getSeconds()).padStart(2, '0')
+            document.querySelector(".hour").textContent = hour
+            document.querySelector(".min").textContent = minutes
+            document.querySelector(".sec").textContent = second
+
+
+        }
+
+        setInterval(update_time, 1000)
+        update_time()
+        async function getSunriseSunset() {
+            const lat = 36.5656;
+            const lng = 53.0588;
+            const date = new Date().toISOString().split('T')[0]; // تاریخ امروز
+
+            const response = await fetch(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}&date=${date}`);
+            const data = await response.json();
+
+            if (data.status === "OK") {
+                const sunrise = data.results.sunrise;
+                const sunset = data.results.sunset;
+                console.log(`طلوع آفتاب: ${sunrise}, غروب آفتاب: ${sunset}`);
+            } else {
+                console.error("خطا در دریافت داده‌ها");
+            }
+        }
+
+        getSunriseSunset();
+    </script>
+</body>
+
+</html>
