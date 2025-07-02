@@ -220,7 +220,8 @@ function updateSkyColor(daylightMinutes, nightMinutes, minutesSinceSunrise, minu
     let daylight = times.daylightMinutes
     let night = times.nightMinutes
     let sincesunset = currentMinutes - daylight
-    let interval = 100
+    let interval = 60000
+
 
 
 
