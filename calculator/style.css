@@ -1,0 +1,289 @@
+:root {
+    --bg-main: hsl(222, 26%, 31%);
+    --bg-toggle: hsl(223, 31%, 20%);
+    --bg-screen: hsl(224, 36%, 15%);
+    --key-toggle-equal: hsl(6, 63%, 50%);
+    --key-toggle-equal-hover: hsl(7, 93%, 66%);
+    --key-toggle-equal-shadow: hsl(6, 70%, 34%);
+    --key-reset-delete: hsl(225, 21%, 49%);
+    --key-reset-delete-hover: hsl(224, 51%, 76%);
+    --key-reset-delete-shadow: hsl(224, 28%, 35%);
+    --key-num-operator: hsl(30, 25%, 89%);
+    --key-num-operator-hover: hsl(0, 0%, 100%);
+    --key-num-operator-shadow: hsl(28, 16%, 65%);
+    --text-white: hsl(0, 0%, 100%);
+    --text-body: hsl(0, 0%, 100%);
+    --text-num: hsl(221, 14%, 31%);
+}
+
+:root.theme2 {
+    --bg-main: hsl(0, 0%, 90%);
+    --bg-toggle: hsl(0, 5%, 81%);
+    --bg-screen: hsl(0, 0%, 93%);
+    --key-toggle-equal: hsl(25, 98%, 40%);
+    --key-toggle-equal-hover: hsl(25, 100%, 60%);
+    --key-toggle-equal-shadow: hsl(25, 99%, 27%);
+    --key-reset-delete: hsl(185, 42%, 37%);
+    --key-reset-delete-hover: hsl(185, 41%, 56%);
+    --key-reset-delete-shadow: hsl(185, 58%, 25%);
+    --key-num-operator: hsl(45, 7%, 89%);
+    --key-num-operator-hover: hsl(0, 0%, 100%);
+    --key-num-operator-shadow: hsl(35, 11%, 61%);
+    --text-body: hsl(60, 10%, 19%);
+    --text-num: hsl(60, 10%, 19%);
+}
+
+:root.theme3 {
+    --bg-main: hsl(268, 75%, 9%);
+    --bg-toggle: hsl(268, 71%, 12%);
+    --bg-screen: hsl(268, 71%, 12%);
+    --key-toggle-equal: hsl(176, 100%, 44%);
+    --key-toggle-equal-hover: hsl(176, 89%, 75%);
+    --key-toggle-equal-shadow: hsl(177, 92%, 70%);
+    --key-reset-delete: hsl(281, 89%, 26%);
+    --key-reset-delete-hover: hsl(280, 56%, 44%);
+    --key-reset-delete-shadow: hsl(285, 91%, 52%);
+    --key-num-operator: hsl(268, 47%, 21%);
+    --key-num-operator-hover: hsl(267, 54%, 44%);
+    --key-num-operator-shadow: hsl(290, 70%, 36%);
+    --text-body: hsl(52, 100%, 62%);
+    --text-num: hsl(52, 100%, 62%);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "League Spartan";
+    font-weight: 700;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-main);
+    min-height: 100vh;
+}
+
+.calculator {
+    width: 100%;
+    max-width: 588px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.calculator_heading {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    color: var(--text-body);
+    align-items: end;
+}
+
+.logo {
+    letter-spacing: -0.01em;
+
+}
+
+.toggle_theme {
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+    align-items: end;
+}
+
+.theme_numbers {
+    display: flex;
+    gap: 16px;
+    padding: 6px
+}
+
+.theme_numbers span {
+    font-size: 16px;
+
+
+}
+
+.t_button {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+}
+
+.t_button span {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+
+}
+
+.toggle_wraper {
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    width: 70px;
+
+    border-radius: 12px;
+
+    background: var(--bg-toggle);
+
+    transition: background 300ms ease-in-out;
+}
+
+.toggle_btn {
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    cursor: pointer;
+
+    background: var(--key-toggle-equal);
+    border: none;
+    outline: none;
+
+    transition: transform 300ms ease-in-out, background 300ms ease-in-out;
+}
+
+.display {
+    background: var(--bg-screen);
+
+    border-radius: 12px;
+    padding: 36px 32px 32px;
+}
+
+.result {
+    width: 100%;
+    height: 100%;
+    font-size: 56px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-body);
+    direction:rtl;
+    transition: color 300md ease-in-out
+}
+
+.key_pad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 28px 24px;
+
+    background: var(--bg-toggle);
+    border-radius: 12px;
+    padding: 32px;
+
+    transition: background 300ms ease-in-out;
+}
+
+.key_pad button {
+    cursor: pointer;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    transition: background 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.number,
+.operator {
+    background: var(--key-num-operator);
+    width: 100%;
+    padding: 10px 0;
+    background: var(--key-num-operator);
+
+    font-size: 40px;
+    letter-spacing: -0.02em;
+
+    color: var(--text-num);
+
+    box-shadow: 0px 5px 0px 0px var(--key-num-operator-shadow);
+
+}
+
+.number:hover,
+.operator:hover {
+    background: var(--key-num-operator-hover);
+}
+
+.del_btn,
+.reset_btn {
+    background: var(--key-reset-delete);
+    width: 100%;
+    padding: 10px 0;
+
+    font-size: 40px;
+    letter-spacing: -0.02em;
+
+    color: var(--text-white);
+
+    box-shadow: 0px 5px 0px 0px var(--key-reset-delete-shadow);
+}
+
+.del_btn:hover,
+.reset_btn:hover {
+    background: var(--key-reset-delete-hover);
+
+}
+
+.reset_btn {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.equal_btn {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    background: var(--key-toggle-equal);
+    width: 100%;
+    padding: 10px 0;
+
+    font-size: 40px;
+    letter-spacing: -0.02em;
+
+    color: var(--text-white);
+
+    box-shadow: 0px 5px 0px 0px var(--key-toggle-equal-shadow);
+}
+
+.equal_btn:hover,
+.toggle_btn:hover {
+    background: var(--key-toggle-equal-hover);
+
+}
+
+.key_pad button:active {
+    transform: translateY(5px);
+    box-shadow: 0px 0px 0px 0px var(--key-reset-delete-shadow);
+    transition: transform 100ms ease-in, box-shadow 100ms ease-in
+}
+@media (max-width:390px){
+      .display {
+    padding: 24px;
+  }
+    .result {
+    font-size: 40px;
+  }
+   .calculator{
+    width: 90%;
+   } 
+   .key_pad{
+    gap: 18px 16px;
+    padding: 22px;
+   }
+   .del_btn,
+.reset_btn {
+
+    font-size: 20px;
+
+}
+.number,
+.operator ,.equal_btn{
+
+
+    font-size: 32px;
+
+
+}
+}
