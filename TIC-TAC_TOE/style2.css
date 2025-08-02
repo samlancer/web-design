@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --bg-page: #1a2a33;
+    --bg-card: #1f3641;
+    --bg-card-shadow: #15252d;
+    --first: #f2b137;
+    --first-active: #ffc860;
+    --second: #31c3bd;
+    --second-active: #65e9e4;
+    --third: #a8bfc9;
+    --third-active: #dbe8ed;
+    --font: #000;
+
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+
+
+}
+
+body {
+    background-color: var(--bg-page);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--third);
+    padding: 20px;
+}
+
+
+.start-container {
+    background-color: var(--bg-page);
+    max-width: 320px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    display: flex;
+    gap: 10px;
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--bg-card);
+    color: var(--third-active);
+    width: 100%;
+    border-radius: 15px;
+    padding: 30px 20px;
+    box-shadow: 0 8px 0 var(--bg-shadow);
+}
+
+.mark-select {
+    width: 100%;
+    ;
+    display: flex;
+    background-color: var(--bg-card);
+    box-shadow: 4px 4px 0 var(--font);
+    border: 1px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0px;
+}
+
+.mark-option {
+    flex: 1;
+    padding: 8px 0px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    color: var(--third-active);
+}
+
+.mark-option.active {
+    background-color: var(--third-active);
+    color: var(--font);
+    border-radius: 10px;
+}
+
+.reminder {
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--third);
+    margin-top: 10px;
+}
+
+.btn-custom {
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 8px 0;
+}
+
+.btn-cpu {
+    background-color: var(--first-active);
+    color: var(--third-active);
+    box-shadow: 0 5px 0 var(--first-dark);
+}
+
+.btn-player {
+    background-color: var(--second);
+    color: var(--third-active);
+    box-shadow: 0 5px 0 var(--second-dark);
+}
+
+.btn-cpu:hover,
+.btn-player:hover {
+    opacity: 0.9;
+}
+
+select.form-select {
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.btn-start {
+    background-color: var(--first);
+    color: var(--font);
+    box-shadow: 0 5px 0 var(--bg-card-shadow);
+    margin-top: 10px;
+}
+
+.btn-start:hover {
+    opacity: 0.9;
+}
+
+.name-card input.input-name {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: var(--third);
+    color: var(--font);
+    outline: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.name-card input.input-name:focus {
+    background-color: var(--third-active);
+}
+
+.d-none {
+    display: none;
+}

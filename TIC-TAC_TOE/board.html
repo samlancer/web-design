@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIC-TAC-TOE</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <section class="header">
+            <div class="top-w"><img src="./asset/logo.svg" alt="" srcset="">
+            </div>
+            <div class="turn-identifier top-w">
+                <p class="turn-text"> <span class="player-mask"> Turn</span>
+                </p>
+            </div>
+
+            <div class="reload">
+                <img src="./asset/icon-restart.svg" alt="" srcset="">
+            </div>
+
+        </section>
+
+        <section class="board">
+            <button class="number"></button>
+            <button class="number"></button>
+            <button class="number"></button>
+
+            <button class="number"></button>
+            <button class="number"></button>
+            <button class="number"></button>
+
+
+            <button class="number"></button>
+            <button class="number"></button>
+            <button class="number"></button>
+
+        </section>
+
+        <section class="score-board">
+            <div class="score-board-display you-score">
+                <p class="u-score">X (YOU)</p>
+                <p id="xScore">0</p>
+            </div>
+
+            <div class="score-board-display ties">
+                <p class="ties">TIES</p>
+                <p id="ties">0</p>
+            </div>
+
+            <div class="score-board-display op-score">
+                <p class="opp-score">O (CPU)</p>
+                <p id="oScore">0</p>
+            </div>
+        </section>
+    </div>
+    <div class="modal d-none" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <h5 class="modal-title mb-3">OH NO, YOU LOST...</h5>
+                <div class="winner-text">
+                    <span class="x-icon"><img src="./asset/icon-x.svg" style="width: 50px;"></span>
+                    <span>TAKES THE ROUND</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class=" btn-quit px-4 py-2">Quit</button>
+                    <button type="button" class=" btn-next px-4 py-2">Next round</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="./board.js"></script>
+</body>
+
+</html>
