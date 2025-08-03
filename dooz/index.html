@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIC-TAC-TOE</title>
+  <link rel="stylesheet" href="style2.css">
+
+</head>
+
+<body>
+  <div class="start-container">
+
+    <div class="logo">
+      <img src="./asset/logo.svg" alt="" srcset="">
+    </div>
+
+
+
+    <button class="btn btn-custom btn-cpu">New Game (vs CPU)</button>
+    <div class="card" style="display: none;">
+      <h5>Pick player mark</h5>
+      <div class="mark-select">
+        <div class="mark-option x active">X</div>
+        <div class="mark-option o ">O</div>
+      </div>
+      <div class="reminder">X always play first</div>
+      <button id="start-game-btn-cpu" class="btn btn-custom btn-start">Start the Game</button>
+
+
+    </div>
+    <button class="btn btn-custom btn-player">New Game (vs player)</button>
+    <div id="player-name-section" class="card name-card" style="display: none;">
+      <h5>Enter Player Names</h5>
+      <input type="text" id="player1" class="input-name" placeholder="Enter the name of X player"  />
+      <input type="text" id="player2" class="input-name" placeholder="Enter the name of O player"  />
+      <button id="start-game-btn" class="btn btn-custom btn-start">Start the Game</button>
+    </div>
+
+  </div>
+
+  <script src="./index.js"></script>
+</body>
+
+</html>
