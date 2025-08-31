@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Manrope";
+}
+
+:root {
+    --red: #F84646;
+    --file: #FF5391;
+    --star: #7553FF;
+    --crown: #53C1FF;
+    --stat: #53ACFF;
+    --chart: #FF5353;
+    --figma: #FFBA53;
+    --text-1: 64px;
+    --text-2: 48px;
+    --text-3: 36px;
+    --text-4: 24px;
+    --text-5: 18px;
+}
+
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: white;
+    background-color: var(--red);
+    border-radius: 4px;
+
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+    color: white;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 4px;
+    background-color: var(--red);
+}
+
+.navbar-nav li {
+    margin: 0px 13px;
+}
+
+header {
+    width: 100%;
+    padding: 20px 0px;
+    background-image: url(./assets/imges/Rectangle\ 1.png);
+    background-repeat: no-repeat;
+    background-position: top;
+    overflow: hidden;
+}
+
+.navbar {
+    margin-bottom: 120px;
+}
+
+.intro {
+    margin-bottom: 150px;
+}
+
+.intro h1 {
+    font-size: var(--text-1);
+}
+
+.intro p {
+    font-size: var(--text-5);
+
+}
+
+.input-top:focus,
+.input-top:active {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.top-btn:focus,
+.top-btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.top-btn {
+    background-color: var(--red);
+    color: white;
+    font-size: 15px;
+}
+
+.input-top::placeholder {
+    color: gray;
+    font-size: 14px;
+}
+
+.service strong {
+    font-size: var(--text-3);
+    font-weight: 500;
+}
+
+.service p {
+    font-size: var(--text-5);
+    font-weight: 300;
+}
+
+.features strong {
+    font-size: var(--text-4);
+}
+
+.features img {
+    width: 80px;
+}
+
+.features p {
+    font-size: var(--text-5);
+}
+
+@media (min-width: 576px) {  }
+
+@media (min-width: 768px) {  }
+
+@media (min-width: 992px) {  }
+
+@media (min-width: 1200px) {  }
+
+@media (min-width: 1400px) {  }
+
+/* header ul {
+    display: flex;
+    justify-content: center;
+}
+
+header ul li {
+    list-style: none;
+    margin-left: 20px;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #000000;
+    padding: 6px 15px;
+
+
+}
+
+header ul li a:hover,
+header ul li a.active {
+    background: var(--red);
+    color: white;
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: var(--text-1);
+}
+
+.header-exp {
+    font-size: var(--text-5);
+}
+
+.top-btn {
+    background-color: var(--red);
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.input-top {
+    color: grey;
+    font-size: 16PX;
+}
+
+.input-top:focus,
+.input-top:active {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.top-btn:focus,
+.top-btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+} */
